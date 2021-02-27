@@ -1,62 +1,35 @@
 import React, { useEffect } from 'react'
-import Banner from './components/Banner'
-import Cases from './components/Cases'
-import Header from './components/Header'
-import IntroOverlay from './components/IntroOverlay'
-import './styles/App.scss'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import gsap from 'gsap'
+import Header from './components/Header'
+import './styles/App.scss'
+
+// pages
+import Home from './pages/home'
+import CaseStudies from './pages/caseStudies'
+import Services from './pages/services'
+import About from './pages/about'
+import Approach from './pages/approach'
 
 function App() {
-  // viewport unit on mobile
   useEffect(() => {
-    let vh = window.innerHeight * 0.01
-    document.documentElement.style.setProperty('--vh', `${vh}px`)
-
     // prevent flashing
     gsap.to('body', 0, { css: { visibility: 'visible' } })
 
-    // gsap timeline
-    const tl = gsap.timeline()
-    tl.from('.line span', 1.8, {
-      y: 100,
-      ease: 'power4.out',
-      delay: 1,
-      skewY: 7,
-      stagger: {
-        amount: 0.3
-      }
-    })
-      .to('.overlay-top', 1.6, {
-        height: 0,
-        ease: 'expo.inOut',
-        stagger: 0.4
-      })
-      .to('.overlay-bottom', 1.6, {
-        width: 0,
-        ease: 'expo.inOut',
-        delay: -0.8,
-        stagger: {
-          amount: 0.4
-        }
-      })
-      .to('.intro-overlay', 0, { css: { display: 'none' } })
-      .from('.case-image img', 1.6, {
-        scale: 1.4,
-        ease: 'ease.inOut',
-        delay: -2,
-        stagger: {
-          amount: 0.4
-        }
-      })
+    // set viewport unit on mobile
+    let vh = window.innerHeight * 0.01
+    document.documentElement.style.setProperty('--vh', `${vh}px`)
   }, [])
 
   return (
-    <div className='App'>
-      <IntroOverlay />
+    <Router>
       <Header />
-      <Banner />
-      <Cases />
-    </div>
+      <Route exact path='/' component={Home} />
+      <Route exact path='/case-studies' component={CaseStudies} />
+      <Route exact path='/services' component={Services} />
+      <Route exact path='/about-us' component={About} />
+      <Route exact path='/approach' component={Approach} />
+    </Router>
   )
 }
 
