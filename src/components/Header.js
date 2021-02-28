@@ -19,7 +19,7 @@ const Header = ({ history, dimensions }) => {
       tl.to('body', { duration: 0.01, css: { overflow: 'hidden' } })
         .to('.App', {
           duration: 1,
-          y: dimensions.width <= 654 ? '70vh' : dimensions.height / 1.4,
+          y: dimensions.width <= 654 ? '75vh' : dimensions.height / 1.4,
           ease: 'expo.inOut'
         })
         .to('.hamburger-menu span', {
