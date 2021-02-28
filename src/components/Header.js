@@ -19,7 +19,7 @@ const Header = ({ history, dimensions }) => {
       tl.to('body', { duration: 0.01, css: { overflow: 'hidden' } })
         .to('.App', {
           duration: 1,
-          y: dimensions.width <= 654 ? '70vh' : dimensions.height / 2,
+          y: dimensions.width <= 654 ? '70vh' : dimensions.height / 1.4,
           ease: 'expo.inOut'
         })
         .to('.hamburger-menu span', {
@@ -94,6 +94,7 @@ const Header = ({ history, dimensions }) => {
           css: { overflow: 'auto' }
         })
     }
+    // eslint-disable-next-line
   }, [menuState.menuOpened])
 
   return (
