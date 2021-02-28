@@ -51,12 +51,11 @@ function App() {
     return () => {
       window.removeEventListener('resize', debouncedHandleResize)
     }
-  }, [])
+  })
 
   return (
     <Router>
-      <Header />
-      {console.log(dimensions)}
+      <Header dimensions={dimensions} />
       <div className='App'>
         <Route exact path='/' component={Home} />
         <Route exact path='/case-studies' component={CaseStudies} />
